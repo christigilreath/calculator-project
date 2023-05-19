@@ -21,6 +21,9 @@ body {
     height: 20%;
     background-color: gray;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end
     
 }
 
@@ -52,4 +55,14 @@ button.first-row {
 
 .second-row, .third-row, .fourth-row, .fifth-row {
     width: 25%;
+}
+#upper-screen {
+    height: 25%;
+    font-size: 25px;
+    
+}
+
+#lower-screen {
+    height: 75%;
+    font-size: 100px;
 }
