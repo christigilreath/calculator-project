@@ -89,7 +89,7 @@ function operateClick(e) {
     
     if (timesClicked === 0) {
       operator = e.target.innerHTML;
-      num1 = parseInt(displayValue);
+      num1 = parseFloat(displayValue);
       lowerDisplay.innerHTML = '';
       upperDisplay.innerHTML += operator;
       displayValue = '';
@@ -120,7 +120,7 @@ operateButtons.forEach(button => button.addEventListener('click', operateClick))
 //create a function for clicking equal button that
 function equalClick() {
     num2 = parseInt(displayValue);
-    equalValue = operate(num1, num2, operator);
+    equalValue = +(operate(num1, num2, operator)).toFixed(2);
     lowerDisplay.innerHTML = equalValue;
     upperDisplay.innerHTML = `${upperDisplay.innerHTML} = ${equalValue}`;
     numberButtons.forEach(number => number.removeEventListener('click', numberClick)); 
