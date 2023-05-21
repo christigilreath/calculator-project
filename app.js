@@ -75,7 +75,6 @@ while (numClickedTimes === 0) {
    } else {
     
     numberClicked = e.target.innerHTML;
-    console.log(numberClicked);
     displayValue += `${numberClicked}`;
     
     lowerDisplay.innerHTML = displayValue;
@@ -164,7 +163,6 @@ clearButton.addEventListener('click', clearClick);
 function decimalClick (e) {
     while (decClickedTimes === 0) {
       decimalClicked = e.target.innerHTML;
-      console.log(decimalClicked);
       displayValue +=`${decimalClicked}`;
       lowerDisplay.innerHTML = displayValue;
       upperDisplay.innerHTML += decimalClicked;
