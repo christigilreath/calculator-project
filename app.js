@@ -70,7 +70,7 @@ while (numClickedTimes === 0) {
       numberClicked = e.target.innerHTML;
       displayValue +=`${numberClicked}`;
       lowerDisplay.innerHTML = displayValue;
-      //upperDisplay.innerHTML = display;
+      upperDisplay.innerHTML += numberClicked;
    } else {
     
     numberClicked = e.target.innerHTML;
@@ -78,9 +78,9 @@ while (numClickedTimes === 0) {
     displayValue += `${numberClicked}`;
     
     lowerDisplay.innerHTML = displayValue;
-    //upperDisplay.innerHTML += display;
+    upperDisplay.innerHTML += numberClicked;
    }
-   //upperDisplay.innerHTML += display; 
+    
     
 }   
    
@@ -166,6 +166,7 @@ function decimalClick (e) {
       console.log(decimalClicked);
       displayValue +=`${decimalClicked}`;
       lowerDisplay.innerHTML = displayValue;
+      upperDisplay.innerHTML += decimalClicked;
       decClickedTimes++
     }
 }
