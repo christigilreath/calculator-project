@@ -8,9 +8,10 @@ const clearButton = document.querySelector('#clear');
 
 lowerDisplay.innerHTML = "0";
 let numberClicked;
-let display = '';
+let displayValue = '';
 let timesClicked = 0;
 let equalValue;
+let numClickedTimes = 0;
 
 
 
@@ -54,19 +55,29 @@ let num2;
 
 //create a function for the clicking number buttons
 function numberClick (e) {
-   if (timesClicked === 0) {
-      numberClicked = e.target.innerHTML;
-      display +=`${numberClicked}`
-      lowerDisplay.innerHTML = display;
-      upperDisplay.innerHTML = display;
-   } else {
-    display = '';
-    numberClicked = e.target.innerHTML;
-    display += `${numberClicked}`;
-    lowerDisplay.innerHTML = display;
-    upperDisplay.innerHTML += display;
-   }
     
+
+while (numClickedTimes === 0) {
+    displayValue = '';
+    numClickedTimes++;
+}
+
+    
+    if (timesClicked === 0) {
+      numberClicked = e.target.innerHTML;
+      displayValue +=`${numberClicked}`;
+      lowerDisplay.innerHTML = displayValue;
+      //upperDisplay.innerHTML = display;
+   } else {
+    //displayValue = '';
+    numberClicked = e.target.innerHTML;
+    console.log(numberClicked);
+    displayValue += `${numberClicked}`;
+    
+    lowerDisplay.innerHTML = displayValue;
+    //upperDisplay.innerHTML += display;
+   }
+   //upperDisplay.innerHTML += display; 
     
 }   
    
@@ -75,22 +86,29 @@ function numberClick (e) {
 //creater a function for clicking operate buttons that takes the display values and stores the operator clicked
 
 function operateClick(e) {
+    
     if (timesClicked === 0) {
       operator = e.target.innerHTML;
-      num1 = parseInt(display);
+      num1 = parseInt(displayValue);
       lowerDisplay.innerHTML = '';
       upperDisplay.innerHTML += operator;
-      display = '';
+      displayValue = '';
       timesClicked++;
+      numClickedTimes = 0;
+      
     } else {
-        num2 = parseInt(display);
+        
+        
+        num2 = parseInt(displayValue);
+        console.log(num2)
         lowerDisplay.innerHTML = "";
         equalValue = operate(num1, num2, operator);
         lowerDisplay.innerHTML = equalValue;
         num1 = equalValue;
         operator = e.target.innerHTML;
-        display = equalValue;
+        displayValue = equalValue;
         upperDisplay.innerHTML += operator;
+        numClickedTimes = 0;
     }
     
     
@@ -101,7 +119,7 @@ operateButtons.forEach(button => button.addEventListener('click', operateClick))
 
 //create a function for clicking equal button that
 function equalClick() {
-    num2 = parseInt(display);
+    num2 = parseInt(displayValue);
     equalValue = operate(num1, num2, operator);
     lowerDisplay.innerHTML = equalValue;
     upperDisplay.innerHTML = `${upperDisplay.innerHTML} = ${equalValue}`;
@@ -119,11 +137,14 @@ num1 = '';
 num2 = '';
 operator = '';
 lowerDisplay.innerHTML ="0";
-display = '';
+displayValue = '';
 timesClicked = 0;
 equalValue = '';
 upperDisplay.innerHTML = '';
+numClickedTimes = 0;
 }
 
 
 clearButton.addEventListener('click', clearClick)
+ 
+
