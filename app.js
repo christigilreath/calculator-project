@@ -175,10 +175,17 @@ decimalButton.addEventListener('click', decimalClick);
 // create a function for the delete button that deletes the last character entered
 
 function deleteClick () {
+    deletedNumber = `${displayValue}`;
+    let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    deletedNumber = deletedNumber.slice(deletedNumber.length -1, deletedNumber.length);
+    
+    
+    if (numbers.includes(deletedNumber)) {
     displayValue = `${displayValue}`;
     displayValue = displayValue.slice(0, -1);
     lowerDisplay.innerHTML = displayValue;
     upperDisplay.innerHTML = upperDisplay.innerHTML.slice(0, -1);
+    }
 }
 
 deleteButton.addEventListener('click', deleteClick);
