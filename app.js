@@ -1,12 +1,12 @@
 const buttons = document.querySelectorAll('button');
-const upperScreen = document.querySelector('#upper-screen');
+const upperDisplay = document.querySelector('#upper-screen');
 const lowerDisplay = document.querySelector('#lower-screen');
 const numberButtons = document.querySelectorAll("#num");
 const operateButtons = document.querySelectorAll('#op');
 const equalButton = document.querySelector("#equal");
 const clearButton = document.querySelector('#clear');
 
-
+lowerDisplay.innerHTML = "0";
 let numberClicked;
 let display = '';
 let timesClicked = 0;
@@ -58,11 +58,13 @@ function numberClick (e) {
       numberClicked = e.target.innerHTML;
       display +=`${numberClicked}`
       lowerDisplay.innerHTML = display;
+      upperDisplay.innerHTML = display;
    } else {
     display = '';
     numberClicked = e.target.innerHTML;
     display += `${numberClicked}`;
     lowerDisplay.innerHTML = display;
+    upperDisplay.innerHTML += display;
    }
     
     
@@ -77,6 +79,7 @@ function operateClick(e) {
       operator = e.target.innerHTML;
       num1 = parseInt(display);
       lowerDisplay.innerHTML = '';
+      upperDisplay.innerHTML += operator;
       display = '';
       timesClicked++;
     } else {
@@ -87,6 +90,7 @@ function operateClick(e) {
         num1 = equalValue;
         operator = e.target.innerHTML;
         display = equalValue;
+        upperDisplay.innerHTML += operator;
     }
     
     
@@ -100,6 +104,7 @@ function equalClick() {
     num2 = parseInt(display);
     equalValue = operate(num1, num2, operator);
     lowerDisplay.innerHTML = equalValue;
+    upperDisplay.innerHTML = `${upperDisplay.innerHTML} = ${equalValue}`;
     
     
 }
@@ -117,6 +122,7 @@ lowerDisplay.innerHTML ="0";
 display = '';
 timesClicked = 0;
 equalValue = '';
+upperDisplay.innerHTML = '';
 }
 
 
