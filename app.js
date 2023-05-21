@@ -69,7 +69,7 @@ while (numClickedTimes === 0) {
       lowerDisplay.innerHTML = displayValue;
       //upperDisplay.innerHTML = display;
    } else {
-    //displayValue = '';
+    
     numberClicked = e.target.innerHTML;
     console.log(numberClicked);
     displayValue += `${numberClicked}`;
@@ -81,7 +81,7 @@ while (numClickedTimes === 0) {
     
 }   
    
- numberButtons.forEach(number => number.addEventListener('click', numberClick))   
+ numberButtons.forEach(number => number.addEventListener('click', numberClick));   
     
 //creater a function for clicking operate buttons that takes the display values and stores the operator clicked
 
@@ -113,8 +113,8 @@ function operateClick(e) {
     
     
     
-}
-operateButtons.forEach(button => button.addEventListener('click', operateClick))
+};
+operateButtons.forEach(button => button.addEventListener('click', operateClick));
 
 
 //create a function for clicking equal button that
@@ -123,11 +123,13 @@ function equalClick() {
     equalValue = operate(num1, num2, operator);
     lowerDisplay.innerHTML = equalValue;
     upperDisplay.innerHTML = `${upperDisplay.innerHTML} = ${equalValue}`;
+    numberButtons.forEach(number => number.removeEventListener('click', numberClick)); 
+    operateButtons.forEach(button => button.removeEventListener('click', operateClick));
     
     
 }
 
-equalButton.addEventListener('click', equalClick)
+equalButton.addEventListener('click', equalClick);
 
 
 
@@ -142,9 +144,11 @@ timesClicked = 0;
 equalValue = '';
 upperDisplay.innerHTML = '';
 numClickedTimes = 0;
+numberButtons.forEach(number => number.addEventListener('click', numberClick));
+operateButtons.forEach(button => button.addEventListener('click', operateClick)); 
 }
 
 
-clearButton.addEventListener('click', clearClick)
+clearButton.addEventListener('click', clearClick);
  
 
