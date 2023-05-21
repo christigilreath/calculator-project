@@ -5,6 +5,7 @@ const numberButtons = document.querySelectorAll("#num");
 const operateButtons = document.querySelectorAll('#op');
 const equalButton = document.querySelector("#equal");
 const clearButton = document.querySelector('#clear');
+const decimalButton = document.querySelector('#decimal');
 
 lowerDisplay.innerHTML = "0";
 let numberClicked;
@@ -12,6 +13,8 @@ let displayValue = '';
 let timesClicked = 0;
 let equalValue;
 let numClickedTimes = 0;
+let decClickedTimes = 0;
+let decimalClicked;
 
 
 
@@ -95,6 +98,7 @@ function operateClick(e) {
       displayValue = '';
       timesClicked++;
       numClickedTimes = 0;
+      decClickedTimes = 0;
       
     } else {
         
@@ -109,6 +113,7 @@ function operateClick(e) {
         displayValue = equalValue;
         upperDisplay.innerHTML += operator;
         numClickedTimes = 0;
+        decClickedTimes = 0;
     }
     
     
@@ -144,11 +149,25 @@ timesClicked = 0;
 equalValue = '';
 upperDisplay.innerHTML = '';
 numClickedTimes = 0;
+decClickedTimes = 0;
 numberButtons.forEach(number => number.addEventListener('click', numberClick));
 operateButtons.forEach(button => button.addEventListener('click', operateClick)); 
 }
 
 
 clearButton.addEventListener('click', clearClick);
- 
 
+
+// create a function for the decimal button
+ 
+function decimalClick (e) {
+    while (decClickedTimes === 0) {
+      decimalClicked = e.target.innerHTML;
+      console.log(decimalClicked);
+      displayValue +=`${decimalClicked}`;
+      lowerDisplay.innerHTML = displayValue;
+      decClickedTimes++
+    }
+}
+
+decimalButton.addEventListener('click', decimalClick);
