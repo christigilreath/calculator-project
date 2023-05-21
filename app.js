@@ -6,6 +6,7 @@ const operateButtons = document.querySelectorAll('#op');
 const equalButton = document.querySelector("#equal");
 const clearButton = document.querySelector('#clear');
 const decimalButton = document.querySelector('#decimal');
+const deleteButton = document.querySelector("#delete");
 
 lowerDisplay.innerHTML = "0";
 let numberClicked;
@@ -172,3 +173,14 @@ function decimalClick (e) {
 }
 
 decimalButton.addEventListener('click', decimalClick);
+
+// create a function for the delete button that deletes the last character entered
+
+function deleteClick () {
+    displayValue = `${displayValue}`;
+    displayValue = displayValue.slice(0, -1);
+    lowerDisplay.innerHTML = displayValue;
+    upperDisplay.innerHTML = upperDisplay.innerHTML.slice(0, -1);
+}
+
+deleteButton.addEventListener('click', deleteClick);
